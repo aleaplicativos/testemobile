@@ -28,5 +28,8 @@ function searchWords() {
   }
   
   // Adiciona um listener para o botão de busca
-  document.getElementById('search-button').addEventListener('click', searchWords);
+  document.getElementById('search-button').addEventListener('click', function(event) {
+    event.preventDefault();
+    searchWords();
+  });
   
