@@ -1,25 +1,38 @@
-.container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
   }
   
   h1 {
-	font-size: 3rem;
+	text-align: center;
   }
   
-  button {
-	padding: 1rem;
-	font-size: 1.5rem;
-	margin: 2rem 0;
-  }
-  
-  #palavra-container {
+  .search-container {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: 1.5rem;
+	justify-content: center;
+	margin-bottom: 20px;
+  }
+  
+  #keyword-input {
+	padding: 5px;
+	width: 300px;
+	margin-right: 10px;
+  }
+  
+  #search-button {
+	padding: 5px 10px;
+  }
+  
+  #results-container {
+	margin-top: 20px;
+  }
+  
+  ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  li {
+	margin-bottom: 5px;
   }
   
