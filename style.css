@@ -13,7 +13,7 @@ body {
 	margin-bottom: 20px;
   }
   
-  #keyword-input {
+  #word-input {
 	padding: 5px;
 	width: 300px;
 	margin-right: 10px;
@@ -35,4 +35,4 @@ body {
   li {
 	margin-bottom: 5px;
   }
-  
+    
