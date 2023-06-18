@@ -1,32 +1,32 @@
-async function getPalavraAleatoria() {
-    const response = await fetch('https://api.dicionario-aberto.net/random');
-    const data = await response.json();
+// Função para buscar palavras próximas
+function searchWords() {
+    const keyword = document.getElementById('keyword-input').value;
+    const apiUrl = `https://api.dicionario-aberto.net/near/${keyword}`;
   
-    return {
-      nome: data.word,
-      significados: data.meanings ? data.meanings.map((m) => m.def) : ['Não foram encontrados significados para esta palavra.'],
-    };
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => displayResults(data))
+      .catch(error => console.log('Ocorreu um erro:', error));
   }
   
-  function mostrarPalavra(palavra) {
-    const container = document.getElementById('palavra-container');
+  // Função para exibir os resultados
+  function displayResults(words) {
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.innerHTML = '';
   
-    container.innerHTML = `
-      <h2>${palavra.nome}</h2>
-      <ul>
-        ${palavra.significados.map((s) => `<li>${s}</li>`).join('')}
-      </ul>
-    `;
-  }
-  
-  const btnBuscar = document.getElementById('btn-buscar');
-  btnBuscar.addEventListener('click', async () => {
-    try {
-      const palavra = await getPalavraAleatoria();
-      mostrarPalavra(palavra);
-    } catch (error) {
-      alert('Erro ao buscar palavra aleatória.');
-      console.error(error);
+    if (words.length === 0) {
+      resultsContainer.innerHTML = 'Nenhuma palavra próxima encontrada.';
+    } else {
+      const list = document.createElement('ul');
+      words.forEach(word => {
+        const listItem = document.createElement('li');
+        listItem.textContent = word;
+        list.appendChild(listItem);
+      });
+      resultsContainer.appendChild(list);
     }
-  });
+  }
+  
+  // Adiciona um listener para o botão de busca
+  document.getElementById('search-button').addEventListener('click', searchWords);
   
