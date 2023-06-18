@@ -1,7 +1,7 @@
 // Função para buscar palavras próximas
 function searchWords() {
-    const keyword = document.getElementById('keyword-input').value;
-    const apiUrl = `https://api.dicionario-aberto.net/near/${keyword}`;
+    const word = document.getElementById('word-input').value;
+    const apiUrl = `https://api.dicionario-aberto.net/near/${encodeURIComponent(word)}`;
   
     fetch(apiUrl)
       .then(response => response.json())
