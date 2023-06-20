@@ -1,12 +1,17 @@
 // Função para buscar palavras próximas
 function searchWords() {
-    const word = document.getElementById('word-input').value;
-    const apiUrl = `https://api.dicionario-aberto.net/near/${encodeURIComponent(word)}`;
-  
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => displayResults(data))
-      .catch(error => console.log('Ocorreu um erro:', error));
+  const word = document.getElementById('word-input').value;
+  const apiUrl = `https://api.dicionario-aberto.net/near/${encodeURIComponent(word)}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Exibe os dados recebidos no console
+      displayResults(data);
+    })
+    .catch(error => console.log('Ocorreu um erro:', error));
+}
+
   }
   
   // Função para exibir os resultados
